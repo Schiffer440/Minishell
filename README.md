@@ -1,6 +1,7 @@
 # gen notes
 
 # exec
+- [OK] exit
 - [ ] 
 
 

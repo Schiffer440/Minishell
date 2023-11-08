@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 14:35:48 by adugain           #+#    #+#             */
-/*   Updated: 2023/11/08 14:26:53 by adugain          ###   ########.fr       */
+/*   Created: 2023/11/08 11:33:23 by adugain           #+#    #+#             */
+/*   Updated: 2023/11/08 11:33:38 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	process(t_data *data)
+char	*ft_strjoin_pipex(char *s1, char *s2, int token)
 {
-	while (1)
-	{
-		initloop(data);
-		data->input = readline(data->prompt);
-		add_history(data->input);
-		/*ft nb de pipe si il y en a*/
-		builtin(data);
-		// ft_exec(data);
-		endloop(data);
-	}
-}
+	char	*str;
+	int		i;
+	int		j;
 
-int	main(int ac, char **av, char **envp)
-{
-	t_data	data;
-
-	(void)ac;
-	(void)av;
-	init_all(&data, envp);
-	process(&data);
-
+	i = -1;
+	j = 0;
+	if (!s1 || !s2)
+		return (0);
+	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
+	if (!str)
+		return (0);
+	while (s1[++i])
+		str[i] = s1[i];
+	while (s2[j])
+		str[i++] = s2[j++];
+	str[i] = '\0';
+	free_token(s1, s2, token);
+	return (str);
 }

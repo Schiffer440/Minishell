@@ -6,7 +6,7 @@
 #    By: adugain <adugain@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/19 21:41:34 by adugain           #+#    #+#              #
-#    Updated: 2023/11/07 16:07:09 by adugain          ###   ########.fr        #
+#    Updated: 2023/11/08 14:26:35 by adugain          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = Minishell
 
 LIBFT = libft/libft.a
 
-SRC = main.c
+SRC = main.c exec.c free.c init.c utils.c builtin.c
 
 CFLAGS	= -Wextra -Wall -Werror -MMD -g3
 

@@ -6,7 +6,7 @@
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 14:39:57 by adugain           #+#    #+#             */
-/*   Updated: 2022/12/08 17:11:41 by adugain          ###   ########.fr       */
+/*   Updated: 2023/11/08 15:16:00 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@ char	*ft_strdup(char *src)
 {
 	char	*a;
 
-	a = malloc(sizeof(char) * ft_strlen(src) + 1);
-	if (a == 0)
-		return (0);
+	a = 0;
+	a = malloc(sizeof(char) * (ft_strlen(src) + 1));
+	if (!a)
+		return (NULL);
 	else
-		ft_strlcpy(a, src, ft_strlen(src) + 1);
+		ft_strcpy(a, src);
 	return (a);
 }

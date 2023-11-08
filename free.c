@@ -1,38 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 14:35:48 by adugain           #+#    #+#             */
-/*   Updated: 2023/11/08 14:26:53 by adugain          ###   ########.fr       */
+/*   Created: 2023/11/08 11:28:48 by adugain           #+#    #+#             */
+/*   Updated: 2023/11/08 12:24:35 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	process(t_data *data)
+void	end_all(t_data *data)
 {
-	while (1)
+	int	i;
+
+	i = 0;
+	while (data->env[i])
 	{
-		initloop(data);
-		data->input = readline(data->prompt);
-		add_history(data->input);
-		/*ft nb de pipe si il y en a*/
-		builtin(data);
-		// ft_exec(data);
-		endloop(data);
+		free(data->env[i]);
+		i++;
 	}
+	free(data->env);
 }
 
-int	main(int ac, char **av, char **envp)
+void	endloop(t_data *data)
 {
-	t_data	data;
+	free(data->input);
+	free(data->prompt);
+}
 
-	(void)ac;
-	(void)av;
-	init_all(&data, envp);
-	process(&data);
-
+void	free_token(char *s1, char *s2, int token)
+{
+	if (token == 1)
+		free(s1);
+	if (token == 2)
+		free(s2);
+	if (token == 3)
+	{
+		free(s1);
+		free(s2);
+	}
 }

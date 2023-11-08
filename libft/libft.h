@@ -6,7 +6,7 @@
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:28:55 by adugain           #+#    #+#             */
-/*   Updated: 2023/07/31 14:40:49 by adugain          ###   ########.fr       */
+/*   Updated: 2023/11/08 14:53:53 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ void	ft_error(char *msg);
 float	ft_fabs(float f);
 int		ft_max(int a, int b);
 int		ft_min(int a, int b);
+char	*ft_strcpy(char *dest, const char *src);
 
 #endif
