@@ -6,7 +6,7 @@
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:28:55 by adugain           #+#    #+#             */
-/*   Updated: 2023/11/08 14:53:53 by adugain          ###   ########.fr       */
+/*   Updated: 2023/11/10 11:25:11 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,7 @@ float	ft_fabs(float f);
 int		ft_max(int a, int b);
 int		ft_min(int a, int b);
 char	*ft_strcpy(char *dest, const char *src);
+char	*ft_strjoin_Mshell(char *s1, char *s2, int token);
+char	*ft_strjoin_pipex(char *s1, char *s2, int token);
 
 #endif

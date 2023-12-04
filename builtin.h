@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   builtin.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 14:39:57 by adugain           #+#    #+#             */
-/*   Updated: 2023/11/10 11:43:29 by adugain          ###   ########.fr       */
+/*   Created: 2023/12/04 11:23:50 by adugain           #+#    #+#             */
+/*   Updated: 2023/12/04 12:10:46 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft/libft.h"
+#include "minishell.h"
 
-char	*ft_strdup(char *src)
-{
-	char	*a;
-
-	// a = 0;
-	a = malloc(sizeof(char) * (ft_strlen(src) + 1));
-	if (!a)
-		return (NULL);
-	else
-		ft_strcpy(a, src);
-	return (a);
-}
+// typedef struct s_builtin
+// {
+// 	char *cmd;
+// 	char *exec;
+// 	char *path;
+// }

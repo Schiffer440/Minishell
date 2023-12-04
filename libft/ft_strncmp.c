@@ -6,7 +6,7 @@
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:01:22 by adugain           #+#    #+#             */
-/*   Updated: 2023/07/23 17:33:35 by adugain          ###   ########.fr       */
+/*   Updated: 2023/11/10 11:45:26 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	i = 0;
 	if (n == 0)
 		return (1);
+	if (s1 == NULL || s2 == NULL)
+		return(1);
 	while (i < n && (u1[i] != '\0' || u2[i] != '\0'))
 	{
 		if (u1[i] != u2[i] && (u1[i] != '\0' || u2[i] != '\0'))

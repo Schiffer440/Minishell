@@ -6,7 +6,7 @@
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:59:03 by adugain           #+#    #+#             */
-/*   Updated: 2023/11/08 14:26:58 by adugain          ###   ########.fr       */
+/*   Updated: 2023/11/10 11:23:01 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ typedef struct s_data
 void	ft_exec(t_data *data);
 void	end_all(t_data *data);
 void	endloop(t_data *data);
-char	*ft_strjoin_pipex(char *s1, char *s2, int token);
 void	free_token(char *s1, char *s2, int token);
 void	process(t_data *data);
 char	**get_env(char **envp);

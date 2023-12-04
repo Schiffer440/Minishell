@@ -6,7 +6,7 @@
 #    By: adugain <adugain@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 11:45:28 by adugain           #+#    #+#              #
-#    Updated: 2023/11/08 14:54:51 by adugain          ###   ########.fr        #
+#    Updated: 2023/11/10 11:25:25 by adugain          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRC =	ft_calloc.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 		ft_wordcount.c ft_replace.c ft_abs.c \
 		ft_lstnew.c ft_lstadd_front.c ft_lstadd_back.c ft_lstlast.c ft_lstsize.c ft_lstdelone.c \
 		ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_free_tab_c.c ft_perror.c ft_error.c ft_fabs.c \
-		ft_min.c ft_max.c ft_strcpy.c
+		ft_min.c ft_max.c ft_strcpy.c ft_strjoin_Mshell.c ft_strjoin_pipex.c
 
 CFLAGS	= -Wextra -Wall -Werror
 
