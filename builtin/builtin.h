@@ -1,37 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   builtin.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 14:35:48 by adugain           #+#    #+#             */
-/*   Updated: 2023/12/07 15:03:46 by adugain          ###   ########.fr       */
+/*   Created: 2023/12/04 11:23:50 by adugain           #+#    #+#             */
+/*   Updated: 2023/12/04 12:10:46 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
 #include "minishell.h"
 
-void	process(t_data *data)
-{
-	while (1)
-	{
-		initloop(data);
-		data->input = readline(data->prompt);
-		add_history(data->input);
-		/*ft nb de pipe si il y en a*/
-		get_pipes(data);
-		endloop(data);
-	}
-}
-
-int	main(int ac, char **av, char **envp)
-{
-	t_data	data;
-
-	(void)ac;
-	(void)av;
-	init_all(&data, envp);
-	process(&data);
-
-}
+// typedef struct s_builtin
+// {
+// 	char *cmd;
+// 	char *exec;
+// 	char *path;
+// }

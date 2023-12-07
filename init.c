@@ -6,7 +6,7 @@
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:27:28 by adugain           #+#    #+#             */
-/*   Updated: 2023/11/08 14:20:25 by adugain          ###   ########.fr       */
+/*   Updated: 2023/12/07 14:43:07 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	init_all(t_data *data, char **envp)
 void	initloop_cmd(t_data *data)
 {
 	data->cmd->path = get_paths(data);
-	// data->cmd->exec = 
+	// data->cmd->exec =
 }
 
 void	initloop(t_data *data)
