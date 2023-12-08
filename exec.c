@@ -6,7 +6,7 @@
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:24:30 by adugain           #+#    #+#             */
-/*   Updated: 2023/11/08 14:02:42 by adugain          ###   ########.fr       */
+/*   Updated: 2023/12/08 23:57:49 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_exec(t_data *data)
 {
 	int	pid;
 	char	**path;
-	char	*exec;
+	char	*cl_path;
 
 	pid = fork();
 	if (pid == -1)
@@ -65,11 +65,11 @@ void	ft_exec(t_data *data)
 	if (pid == 0)
 	{
 		path = get_paths(data);
-		exec = get_exec(path, ft_split(data->input, ' '));
-		if (execve(exec, ft_split(data->input, ' '), data->env) == -1)
+		cl_path = get_exec(path, data->cmd[0].exec);
+		if (execve(cl_path, data->cmd[0].exec, data->env) == -1)
 		{
 			ft_free_tab_c(path);
-			free(exec);
+			free(cl_path);
 			exit(0);
 		}
 	}

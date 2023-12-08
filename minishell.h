@@ -6,7 +6,7 @@
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:59:03 by adugain           #+#    #+#             */
-/*   Updated: 2023/12/07 15:26:23 by adugain          ###   ########.fr       */
+/*   Updated: 2023/12/08 17:38:28 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef	struct s_cmd
 	int	pid;
 	char	**path;
 	char	**cl_cmd;
-	char	*exec;
+	char	**exec;
 	char	*target;
 }t_cmd;
 
