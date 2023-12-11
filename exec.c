@@ -6,11 +6,23 @@
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:24:30 by adugain           #+#    #+#             */
-/*   Updated: 2023/12/08 23:57:49 by adugain          ###   ########.fr       */
+/*   Updated: 2023/12/11 16:08:17 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static void	exec_error(char **paths, t_data *data)
+{
+	char	*msg;
+
+	msg = ft_strjoin_pipex(ft_strdup("command not found: "), ft_strdup(data->cmd[0].exec[0]), 3);
+	ft_free_tab_c(data->cmd[0].exec);
+	ft_free_tab_c(paths);
+	perror(msg);
+	free(msg);
+	exit(127);
+}
 
 char	**get_paths(t_data *data)
 {
@@ -66,12 +78,15 @@ void	ft_exec(t_data *data)
 	{
 		path = get_paths(data);
 		cl_path = get_exec(path, data->cmd[0].exec);
-		if (execve(cl_path, data->cmd[0].exec, data->env) == -1)
+		if (!cl_path || execve(cl_path, data->cmd[0].exec, data->env) == -1)
 		{
-			ft_free_tab_c(path);
-			free(cl_path);
-			exit(0);
+			exec_error(path, data);
 		}
+		free_cmd_struc(data);
+		// ft_free_tab_c(data->cmd[0].exec);
+		ft_free_tab_c(path);
+		// free(data->cmd);
 	}
-	wait(NULL);
+	while (wait(NULL) > 0)
+			;
 }

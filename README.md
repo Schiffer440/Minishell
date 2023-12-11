@@ -1,7 +1,7 @@
 # gen notes
 
-- [ ] test exec 
-- [ ] modif ft_exec avec char *exec unique a envoyer dans mon ft_exec(modifer le get cmds)
+- [OK] test exec 
+- [OK] modif ft_exec avec char *exec unique a envoyer dans mon ft_exec(modifer le get cmds)
 
 # exec
 - [OK] exit

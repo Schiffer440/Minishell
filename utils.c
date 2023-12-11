@@ -6,11 +6,24 @@
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:33:23 by adugain           #+#    #+#             */
-/*   Updated: 2023/12/08 23:59:22 by adugain          ###   ########.fr       */
+/*   Updated: 2023/12/11 16:50:02 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	free_cmd_struc(t_data *data)
+{
+	int	i;
+	
+	i = 0;
+	while (i < data->pipes)
+	{
+		ft_free_tab_c(data->cmd[i].exec);
+		i++;
+	}
+	free(data->cmd);
+}
 
 void	get_cmds(t_data *data, char **cmds, int	pipes)
 {
@@ -19,7 +32,9 @@ void	get_cmds(t_data *data, char **cmds, int	pipes)
 	char **tmp;
 	
 	i = 0;
-	data->cmd = malloc(sizeof(t_cmd) * pipes);
+	Pint(pipes);
+	/*leak ici apparemment lorsque l'on entre au moins une cmd avant d'exit*/
+	data->cmd = malloc(sizeof(t_cmd) * pipes + 1);
 	while(i < pipes)
 	{
 		j = 0;
@@ -38,21 +53,22 @@ void	get_cmds(t_data *data, char **cmds, int	pipes)
 			data->cmd[i].exec[j] = ft_strdup(tmp[j]);
 			j++;
 		}
+		data->cmd[i].exec[j] = '\0';
 		ft_free_tab_c(tmp);
 		i++;
 	}
+	// free(data->cmd);
+	ft_free_tab_c(cmds);
 }
 
 void	get_pipes(t_data *data)
 {
 	char **cmds;
-	int	pipes;
 	
-	pipes = 0;
 	cmds = ft_split(data->input, '|');
-	while (cmds[pipes])
+	while (cmds[data->pipes])
 	{
-		pipes++;
+		data->pipes++;
 	}
-	get_cmds(data, cmds, pipes);
+	get_cmds(data, cmds, data->pipes);
 }

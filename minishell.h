@@ -6,7 +6,7 @@
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:59:03 by adugain           #+#    #+#             */
-/*   Updated: 2023/12/08 17:38:28 by adugain          ###   ########.fr       */
+/*   Updated: 2023/12/11 15:51:38 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,7 @@
 
 typedef	struct s_cmd
 {
-	int	pid;
-	char	**path;
-	char	**cl_cmd;
 	char	**exec;
-	char	*target;
 }t_cmd;
 
 typedef struct s_data
@@ -55,5 +51,6 @@ char	**get_paths(t_data *data);
 // void	ft_echo(t_data *data);
 void	builtin(t_data *data);
 void	get_pipes(t_data *data);
+void	free_cmd_struc(t_data *data);
 
 #endif 

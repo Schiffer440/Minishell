@@ -6,7 +6,7 @@
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:15:21 by adugain           #+#    #+#             */
-/*   Updated: 2023/12/05 15:53:54 by adugain          ###   ########.fr       */
+/*   Updated: 2023/12/11 15:51:24 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,21 +48,15 @@
 
 static void	exit_shell(t_data *data)
 {
-	char **tab;
-
-	tab = ft_split(data->input, ' '); 
-	if (/*data->cmd->pipe == 0 &&*/(ft_strncmp(tab[0], "exit", sizeof(tab[0])) == 0))
-	{
 		write(1, "exit\n", 5);
-		ft_free_tab_c(tab);
+		free_cmd_struc(data);
 		endloop(data);
 		end_all(data);
 		exit(0);
-	}
 }
 
 void	builtin(t_data *data)
 {
-	
-	exit_shell(data);
+	if (strcmp(data->cmd[0].exec[0], "exit") == 0)
+		exit_shell(data);
 }
