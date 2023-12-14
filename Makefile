@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adugain <adugain@student.42.fr>            +#+  +:+       +#+         #
+#    By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/19 21:41:34 by adugain           #+#    #+#              #
-#    Updated: 2023/12/05 15:48:27 by adugain          ###   ########.fr        #
+#    Updated: 2023/12/14 19:02:22 by mbruyant         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,14 @@ NAME = Minishell
 
 LIBFT = libft/libft.a
 
-SRC = main.c exec.c free.c init.c utils.c builtin/builtin.c
+SRC = files/main.c \
+files/exec.c \
+files/free.c \
+files/init.c \
+files/utils.c \
+builtin/builtin.c
 
-CFLAGS	= -Wextra -Wall -Werror -MMD -g3
+CFLAGS	= -Wextra -Wall -Werror -MMD -g3 -O2
 
 CC = cc
 

@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:35:48 by adugain           #+#    #+#             */
-/*   Updated: 2023/12/14 18:55:50 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/14 19:04:13 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	visualizer(t_data *data)
 	int	i;
 
 	i = 0;
-	while;(i < data->pipes)
+	while (i < data->pipes)
 	{
 		if (data->cmd[i].exec[0])
 			P(data->cmd[i].exec[0]);
