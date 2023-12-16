@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:36:11 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/15 14:15:27 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/16 18:52:57 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,16 @@ typedef struct s_parse {
 	int			token_nb;
 	t_cmd		*cmds;
 }	t_parse;
+
+typedef struct s_env {
+	char	**env;
+}	t_env;
+
+/* ft_2d_array.c */
+int		ft_2d_lines(char **array);
+void	ft_free_2d_array(char **array);
+char	**ft_copy_2d_array(char **arr, int from, int len);
+int		ft_len_2d_array(char **arr);
+int		ft_2d_has_doubles(char **arr);
 
 #endif
