@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 13:15:03 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/17 18:42:26 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/17 19:21:29 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,25 @@ void	ft_env_update(t_env *envi, char *tag_, char *cont)
 			if (!envi->node_->n_content)
 			{
 				printf("Update envi node failed !\n");
-				/* ft_free_all(envi); */
+				ft_env_free(envi->node_);
 			}
 			break ;
 		}
 		envi->node_ = envi->node_->next;
+	}
+}
+
+void	ft_env_free(t_env_node *envi)
+{
+	t_env_node	*curr;
+
+	while (envi)
+	{
+		curr = envi;
+		envi = envi->next;
+		free(curr->n_tag);
+		free(curr->n_content);
+		free(curr);
 	}
 }
 

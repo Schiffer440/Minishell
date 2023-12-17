@@ -11,9 +11,9 @@
 # parse
 - [ ] ``minishell > grep 'coucou' |   | cat main.c `` > msg erreur
 ### parsing env
-- [ ] envp init
+- [x] envp init
 - [ ] envp init if not env (check what is expected before)(PWD, shell level and _)
-- [ ] display env
+- [x] display env
 - [ ] replace (or actualise) an env value function
 - [ ] delete an env value function
 - [ ] create an env value function (export)

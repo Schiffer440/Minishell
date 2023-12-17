@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:41:40 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/17 18:54:33 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/17 19:21:28 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	ft_add_envi_node(t_env_node **src, t_env_node *to_add)
 }
 
 /* tested : OK */
+/* needs to me modified so it takes tag and content sep */
 t_env_node	*ft_create_node(char *content_)
 {
 	t_env_node	*new;
@@ -81,7 +82,8 @@ t_env_node	*ft_create_node(char *content_)
 	new->next = NULL;
 	return (new);
 }
-/*	OK
+
+/*
 int	main(int argc, char **argv, char **envp)
 {
 	t_env	*ret;
@@ -90,6 +92,8 @@ int	main(int argc, char **argv, char **envp)
 	if (!argc || !argv || !ret)
 		printf("oopsie\n");
 	ft_env_display(&ret->node_);
+	ft_env_free(ret->node_);
+	free(ret);
 	return (0);
 }
 */
