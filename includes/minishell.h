@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:59:03 by adugain           #+#    #+#             */
-/*   Updated: 2023/12/14 18:43:32 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/17 14:14:07 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_data
 	char	*input;
 	char	cwd[PATH_MAX];
 	char	*prompt;
-	char	**env;
+	t_env	*d_env;
 	int		pipes;
 }t_data;
 
