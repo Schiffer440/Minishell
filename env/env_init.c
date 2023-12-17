@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:41:40 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/17 18:43:01 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/17 18:54:33 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ t_env_node	*ft_create_node(char *content_)
 	new->next = NULL;
 	return (new);
 }
-/*
+/*	OK
 int	main(int argc, char **argv, char **envp)
 {
 	t_env	*ret;
