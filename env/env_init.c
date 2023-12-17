@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:41:40 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/17 19:21:28 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/17 19:49:48 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ int	main(int argc, char **argv, char **envp)
 	ret = ft_init_envi(envp);
 	if (!argc || !argv || !ret)
 		printf("oopsie\n");
+	if (argc == 3)
+		ft_env_update(ret->node_, argv[1], argv[2]);
 	ft_env_display(&ret->node_);
 	ft_env_free(ret->node_);
 	free(ret);
