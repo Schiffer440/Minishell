@@ -17,6 +17,7 @@
 - [ ] replace (or actualise) an env value function
 - [ ] delete an env value function
 - [ ] create an env value function (export)
+- [x] free env struct fuction
 ### parsing cmd
 - [ ] faire choix de struct pour le lexer ou include directement dans le parsing ?
 - [ ] check if using ' "
