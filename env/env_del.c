@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:51:46 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/18 14:43:38 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/18 16:43:30 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ t_env_node	*ft_find_node(t_env_node **envi, char *tag_)
 	return (NULL);
 }
 
-/* check if : not finding, only 1 node (check if leak looking for it)
+/* check if : not finding, only 1 node (check if leak looking for it) */
 void	ft_env_del_elem(t_env_node *envi, char *tag_)
 {
 	t_env_node	*prev;
 	t_env_node	*curr;
 
-	if(!envi || !*envi)
-		return;
+	if (!envi || !*envi)
+		return ;
 	prev = ft_find_prev_node(*envi, tag_);
 //only one node, doit free tout le tableau dans ce cas ? plutot mettre un vide ?	
 	if (!prev)
@@ -75,12 +75,15 @@ void	ft_env_del_elem(t_env_node *envi, char *tag_)
 		ft_free_node(curr);
 	}
 }
-*/
 
 void	ft_free_node(t_env_node *curr)
 {
-	free(curr->n_tag);
-	free(curr->n_content);
+	if (!curr)
+		return ;
+	if (curr->n_tag)
+		free(curr->n_tag);
+	if (curr->n_content)
+		free(curr->n_content);
 	free(curr);
 }
 

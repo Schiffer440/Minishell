@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:40:41 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/18 16:27:24 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/18 16:31:35 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ bool	ft_exists_in_env(t_env_node *envi, char *tag_)
 	}
 	return (false);
 }
+
 /* NOT TESTED */
 char	*ft_get_tag_or_cont(char *str, char t_or_c)
 {
