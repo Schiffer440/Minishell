@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:51:46 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/18 14:36:11 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/18 14:43:38 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,14 @@ void	ft_env_del_elem(t_env_node *envi, char *tag_)
 //si le node a delete est le dernier	
 	if (!curr->next)
 	{
-		ft_free_node(curr);
 		prev->next = NULL;
-		return ;
+		ft_free_node(curr);
 	}
 	else
 	{
 		prev->next = curr->next;
 		ft_free_node(curr);
-		return ;
 	}
-	
 }
 */
 
