@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:51:46 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/18 14:22:00 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/18 14:36:11 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	ft_env_del_elem(t_env_node *envi, char *tag_)
 {
 	t_env_node	*prev;
 	t_env_node	*curr;
-	t_env_node	*next_next;
 
 	if(!envi || !*envi)
 		return;
@@ -57,6 +56,9 @@ void	ft_env_del_elem(t_env_node *envi, char *tag_)
 //only one node, doit free tout le tableau dans ce cas ? plutot mettre un vide ?	
 	if (!prev)
 	{
+// if only one node and tag doesn't fit
+		if (ft_strncmp(envi->n_tag, tag_, ft_strlen(envi->n_tag)))
+			return;
 		ft_free_node(envi);
 		return ;
 	}
