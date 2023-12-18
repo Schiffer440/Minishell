@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 13:15:03 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/17 19:50:08 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:16:46 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,25 +47,6 @@ void	ft_env_del_elem(t_env_node *envi)
 	curr = envi;
 }
 */
-
-void	ft_free_node(t_env_node *curr)
-{
-	free(curr->n_tag);
-	free(curr->n_content);
-	free(curr);
-}
-
-void	ft_env_free(t_env_node *envi)
-{
-	t_env_node	*curr;
-
-	while (envi)
-	{
-		curr = envi;
-		envi = envi->next;
-		ft_free_node(curr);
-	}
-}
 
 /* tested : OK */
 void	ft_env_display(t_env_node **envi)

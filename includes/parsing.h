@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:36:11 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/17 19:43:08 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:42:47 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,15 @@ typedef struct s_env {
 }	t_env;
 
 /*======================= ENV FOLDER =======================*/
+/* env_del.c */
+void		ft_free_node(t_env_node *curr);
+void		ft_env_free(t_env_node *envi);
+t_env_node	*ft_find_node(t_env_node **envi, char *tag_);
+t_env_node	*ft_find_prev_node(t_env_node **envi, char *tag_);
+void		ft_env_del_elem(t_env_node *envi, char *tag_);
 /* env_display.c */
 void		ft_env_update(t_env_node *envi, char *tag_, char *cont);
 void		ft_env_display(t_env_node **envi);
-void		ft_free_node(t_env_node *curr);
-void		ft_env_free(t_env_node *envi);
 /* env_init.c */
 t_env		*ft_init_envi(char **envp);
 t_env_node	*ft_create_node(char *content_);
