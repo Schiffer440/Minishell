@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:36:11 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/18 13:42:47 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/18 16:28:27 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ typedef struct s_env {
 }	t_env;
 
 /*======================= ENV FOLDER =======================*/
+/* env_actual.c */
+bool		ft_exists_in_env(t_env_node *envi, char *tag_);
+char		*ft_get_tag_or_cont(char *str, char t_or_c);
+void		ft_actualize_env(t_env_node *envi, char *str);
 /* env_del.c */
 void		ft_free_node(t_env_node *curr);
 void		ft_env_free(t_env_node *envi);
@@ -72,14 +76,15 @@ t_env_node	*ft_create_node(char *content_);
 void		ft_add_envi_node(t_env_node **src, t_env_node *to_add);
 
 /*======================= UTILS PART =======================*/
-/* ft_2d_array.c */
+/* files/ft_2d_array.c */
 int			ft_2d_lines(char **array);
 void		ft_free_2d_array(char **array);
 char		**ft_copy_2d_array(char **arr, int from, int len);
 int			ft_len_2d_array(char **arr);
 int			ft_2d_has_doubles(char **arr);
 
-/* ft_strdup_limiters.c */
+/* files/ft_str_utils.c */
+int			ft_strocc(char *str, char c);
 char		*ft_strdup_limiters(char *str, int from, int until);
 
 #endif
