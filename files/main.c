@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:35:48 by adugain           #+#    #+#             */
-/*   Updated: 2023/12/21 17:43:36 by adugain          ###   ########.fr       */
+/*   Updated: 2023/12/21 21:24:01 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,14 @@ void	visualizer(t_parse *parse)
 		i++;
 	}
 	parse->cmds = tmp;
+	P("---- command number ");
 	Pint(i);
 }
 
 // void	visualizer_prev(t_parse *parse)
 // {
 // 	int	i;
-	
+//
 // 	i = 0;
 // 	while(parse->cmds->next)
 // 	{
@@ -70,6 +71,7 @@ void	visualizer(t_parse *parse)
 // 	Pint(i);
 // }
 
+/* COMMENTS : data->input is safe (not causing leaks) */
 void	process(t_data *data, t_parse *parse)
 {
 	while (1)

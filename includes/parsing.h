@@ -6,13 +6,15 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:36:11 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/21 21:12:14 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/21 21:50:52 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 # include <stdbool.h>
+
+# define BASE_QUOTES "\'\""
 
 /* respectivement < > << >> | $ ? */
 typedef enum s_tokens
@@ -26,6 +28,7 @@ typedef enum s_tokens
 	question = 7
 }t_tokens;
 
+/* CMD_W_ARGS should be char** dsl */
 typedef struct s_cmd {
 	struct s_cmd	*previous;
 	struct s_cmd	*next;
@@ -36,8 +39,8 @@ typedef struct s_cmd {
 	int				fd_out;
 	bool			b_abs_path;
 	bool			b_builtin;
-	char			*cmd;
 	char			*cmd_w_arg;
+	char			*cmd;
 }	t_cmd;
 
 typedef struct s_parse {

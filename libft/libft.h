@@ -92,6 +92,7 @@ int		ft_max(int a, int b);
 int		ft_min(int a, int b);
 char	*ft_strcpy(char *dest, const char *src);
 char	*ft_strjoin_Mshell(char *s1, char *s2, int token);
+int	ft_str_only_sep(char *str, char sep);
 char	*ft_strjoin_pipex(char *s1, char *s2, int token);
 
 #endif

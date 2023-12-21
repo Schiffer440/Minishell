@@ -3,117 +3,100 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 11:18:22 by adugain           #+#    #+#             */
-/*   Updated: 2023/07/22 12:22:36 by adugain          ###   ########.fr       */
+/*   Created: 2022/11/25 02:03:30 by mbruyant          #+#    #+#             */
+/*   Updated: 2023/10/11 18:09:51 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	*free_split(char **tab, int pos)
+/* split fun renvoie NULL si only sep */
+static void	*ft_free(char **s, size_t j)
 {
-	while (pos >= 0)
+	while (j > 0)
 	{
-		free(tab[pos]);
-		pos--;
+		j--;
+		free(s[j]);
 	}
-	free (tab);
+	free(s);
 	return (NULL);
 }
 
-static int	wordcount(char *s, char c)
+static size_t	ft_wrd_len(const char *s, char c)
 {
-	int	i;
-	int	count;
+	int	len;
 
-	i = 0;
-	count = 0;
-	while (s[i])
-	{
-		if (s[i] == c && s[i])
-			i++;
-		else
-		{
-			while (s[i] != c && s[i])
-			{
-				i++;
-			}
-			count++;
-		}
-	}
-	return (count);
+	len = 0;
+	while (s[len] != '\0' && s[len] != c)
+		len++;
+	return (len);
 }
 
-static char	*filltab(char *s, char c, char **tab, int count)
+static int	ft_wrd_nb(const char *s, char c)
 {
-	int		i;
-	int		len;
-	char	*str;
+	int	nb;
+	int	i;
 
+	nb = 0;
 	i = 0;
-	len = 0;
-	while (s[i] == c)
-		s++;
-	while (s[i] != c && s[i])
-	{
-		i++;
-		len++;
+	while (s[i] != '\0')
+	{	
+		while (s[i] == c && s[i] != '\0')
+			i++;
+		if (s[i] != '\0')
+			nb++;
+		while (s[i] != '\0' && s[i] != c)
+			i++;
 	}
-	str = malloc(sizeof(char) * len + 1);
-	if (!str)
-		return (free_split(tab, count));
-	i = 0;
-	while (i < len)
+	return (nb);
+}
+
+static char	*ft_wrd(char const *s, char c)
+{
+	char	*ret;
+	int		index;
+
+	if (!s)
+		return (NULL);
+	ret = (char *) malloc((ft_wrd_len(s, c) + 1) * sizeof(char));
+	if (!ret)
+		return (NULL);
+	index = 0;
+	while (s[index] != c && index < (int) ft_strlen(s))
 	{
-		str[i] = s[i];
-		i++;
+		ret[index] = s[index];
+		index++;
 	}
-	str[i] = '\0';
-	return (str);
+	ret[index] = '\0';
+	return (ret);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**tab;
-	int		count;
+	char		**ret;
+	int			j;
 
-	if (!s)
+	j = 0;
+	if (!s || ft_str_only_sep((char *) s, c))
 		return (NULL);
-	count = 0;
-	tab = malloc(sizeof(char *) * (wordcount((char *)s, c) + 1));
-	if (!tab)
+	ret = (char **)ft_calloc((ft_wrd_nb(s, c) + 1), sizeof(char *));
+	if (!ret)
 		return (NULL);
-	while (*s)
+	while (*s != '\0')
 	{
-		while (s[0] == c && *s)
+		while (*s != '\0' && *s == c)
 			s++;
-		if (*s)
+		if (*s != '\0')
 		{
-			tab[count] = filltab((char *)s, c, tab, count);
-			if (tab[count] == 0)
-				return (0);
-			count++;
+			ret[j] = ft_wrd(s, c);
+			if (!ret[j])
+				return (ft_free(ret, j));
+			j++;
 		}
-		while (s[0] != c && *s)
+		while (*s != '\0' && *s != c)
 			s++;
 	}
-	tab[count] = 0;
-	return (tab);
+	return (ret);
 }
-
-// #include <stdio.h>
-// int main() 
-// {
-//     int i;
-//     char **tab = ft_split("  tripouille,42  ", ',');
-
-//     i = 0;
-//     while(tab[i])
-//     {
-//         printf("%s\n", tab[i]);
-//         i++;
-//     }
-//   return (0);
-// }

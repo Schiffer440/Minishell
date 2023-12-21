@@ -22,7 +22,8 @@ SRC =	ft_calloc.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 		ft_wordcount.c ft_replace.c ft_abs.c \
 		ft_lstnew.c ft_lstadd_front.c ft_lstadd_back.c ft_lstlast.c ft_lstsize.c ft_lstdelone.c \
 		ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_free_tab_c.c ft_perror.c ft_error.c ft_fabs.c \
-		ft_min.c ft_max.c ft_strcpy.c ft_strjoin_Mshell.c ft_strjoin_pipex.c
+		ft_min.c ft_max.c ft_strcpy.c ft_strjoin_Mshell.c ft_strjoin_pipex.c \
+		ft_str_misc.c
 
 CFLAGS	= -Wextra -Wall -Werror
 
