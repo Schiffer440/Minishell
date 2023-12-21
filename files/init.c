@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:27:28 by adugain           #+#    #+#             */
-/*   Updated: 2023/12/14 18:56:15 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/21 17:42:39 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,19 @@ char	**get_env(char **envp)
 void	init_all(t_data *data, char **envp)
 {
 	data->env = get_env(envp);
+	data->cwd = malloc(((size_t)PATH_MAX) * 2);
+	if (!data->cwd)
+		perror("cwd buffer");
 	data->input = 0;
 	data->prompt = 0;
-	data->pipes = 0;
 }
 
-// void	initloop_cmd(t_data *data)
-// {
-// }
-
 void	initloop(t_data *data)
-{
-	getcwd(data->cwd, sizeof(data->cwd));
-	data->prompt = ft_strjoin(data->cwd, "->");
+{	
+	if (getcwd(data->cwd, (size_t)PATH_MAX) != NULL)
+	{
+		data->prompt = ft_strjoin(data->cwd, "->");
+	}
+	else
+		perror("getcwd");
 }

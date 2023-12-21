@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:36:11 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/18 16:28:27 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/21 17:51:26 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ typedef enum s_tokens
 	question = 7
 }t_tokens;
 
-typedef struct s_cmds {
-	struct s_cmds	*previous;
-	struct s_cmds	*next;
+typedef struct s_cmd {
+	struct s_cmd	*previous;
+	struct s_cmd	*next;
 	t_tokens		prev_token;
 	t_tokens		next_token;
 	bool			b_redir;
@@ -38,11 +38,11 @@ typedef struct s_cmds {
 	bool			b_builtin;
 	char			*cmd;
 	char			*cmd_w_arg;
-}	t_cmds;
+}	t_cmd;
 
 typedef struct s_parse {
 	int			token_nb;
-	t_cmds		*cmds;
+	t_cmd		*cmds;
 }	t_parse;
 
 typedef struct s_env_node {

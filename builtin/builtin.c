@@ -6,11 +6,11 @@
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:15:21 by adugain           #+#    #+#             */
-/*   Updated: 2023/12/11 15:51:24 by adugain          ###   ########.fr       */
+/*   Updated: 2023/12/21 17:48:07 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../includes/minishell.h"
 
 // static void	ft_echo(t_data *data)
 // {
@@ -46,17 +46,22 @@
 // 	}
 // } 
 
-static void	exit_shell(t_data *data)
+static void	exit_shell(t_data *data, t_parse *parse)
 {
-		write(1, "exit\n", 5);
-		free_cmd_struc(data);
+		if (write(1, "exit\n", 5) == -1)
+			perror("write");
+		// free_all(parse);
 		endloop(data);
-		end_all(data);
+		end_all(data, parse);
 		exit(0);
 }
 
-void	builtin(t_data *data)
+void	check_builtin(t_data *data, t_parse *parse)
 {
-	if (strcmp(data->cmd[0].exec[0], "exit") == 0)
-		exit_shell(data);
+	while(parse->cmds)
+	{
+		if (ft_strncmp(parse->cmds->cmd, "exit", sizeof(parse->cmds->cmd)) == 0)
+			exit_shell(data, parse);
+		parse->cmds = parse->cmds->next;
+	}
 }

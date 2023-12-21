@@ -3,16 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:28:48 by adugain           #+#    #+#             */
-/*   Updated: 2023/12/14 18:52:17 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/21 17:41:43 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	end_all(t_data *data)
+void	free_all(t_parse *parse)
+{
+	t_cmd	*current_cmd;
+	t_cmd	*next_cmd;
+
+	current_cmd = parse->cmds;
+	while (current_cmd)
+	{
+		next_cmd = current_cmd->next;
+		free(current_cmd->cmd);
+		free(current_cmd->cmd_w_arg);
+		free(current_cmd);
+		current_cmd = next_cmd;
+	}
+}
+
+void	end_all(t_data *data, t_parse *parse)
 {
 	int	i;
 
@@ -23,12 +39,14 @@ void	end_all(t_data *data)
 		i++;
 	}
 	free(data->env);
+	free(data->cwd);
+	free_all(parse);
 }
 
 void	endloop(t_data *data)
 {
-	free(data->input);
 	free(data->prompt);
+	free(data->input);
 }
 
 void	free_token(char *s1, char *s2, int token)
