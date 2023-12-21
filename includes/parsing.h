@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:36:11 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/21 21:50:52 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/21 22:24:32 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include <stdbool.h>
 
 # define BASE_QUOTES "\'\""
+# define S_QUOTE "\'"
+# define D_QUOTE "\""
 
 /* respectivement < > << >> | $ ? */
 typedef enum s_tokens
