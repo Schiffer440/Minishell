@@ -23,6 +23,7 @@
 - [ ] create an env value function (export)
 - [x] free env struct fuction
 ### parsing cmd
+- [ ] priorite : QUOTE HANDLER
 - [ ] faire choix de struct pour le lexer ou include directement dans le parsing ?
 - [ ] check if using ' "
 - [ ] cas d'erreur qui fait que la commande s'arrete au parsing et non exec ?

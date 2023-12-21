@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:36:11 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/21 22:24:32 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/21 22:27:57 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,12 @@ typedef struct s_cmd {
 	int				fd_out;
 	bool			b_abs_path;
 	bool			b_builtin;
-	char			*cmd_w_arg;
+	char			**cmd_w_arg;
 	char			*cmd;
+	int				nb_s_quote;
+	int				nb_d_quote;
+	bool			b_has_quote;
+	char			quote_used;
 }	t_cmd;
 
 typedef struct s_parse {
