@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:36:11 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/21 17:51:26 by adugain          ###   ########.fr       */
+/*   Updated: 2023/12/21 21:12:14 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_cmd {
 	bool			b_redir;
 	int				fd_in;
 	int				fd_out;
-	bool			abs_path;
+	bool			b_abs_path;
 	bool			b_builtin;
 	char			*cmd;
 	char			*cmd_w_arg;
