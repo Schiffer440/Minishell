@@ -28,5 +28,17 @@
 - [ ] check if using ' "
 - [ ] cas d'erreur qui fait que la commande s'arrete au parsing et non exec ?
 - [ ] redirections
+
+## Test cases (self Q&A)
+### quoting
+![quoting behaviour](readme_pic/quoting_1.png)
+
+:arrow_right::arrow_right: Est-ce que ca rentre dans le sujet
+
+![Possible answer](readme_pic/explain_1.png)
+[Discord link to this message](https://discord.com/channels/774300457157918772/785407549725736971/886914406712238121)
+[man bash](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html)
+![discord answers](readme_pic/parsing_note_1.png)
+
 ## parse doc links
 - [is * a wildcard](https://hbctraining.github.io/Intro-to-shell-flipped/lessons/02_wildcards_shortcuts.html#:~:text=The%20Shell%20(bash)%20considers%20an,the%20most%20for%20our%20exercises.)
