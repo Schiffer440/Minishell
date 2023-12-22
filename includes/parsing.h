@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:36:11 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/21 22:27:57 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/22 11:57:29 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 # include <stdbool.h>
 
 # define BASE_QUOTES "\'\""
-# define S_QUOTE "\'"
-# define D_QUOTE "\""
+# define S_QUOTE '\''
+# define D_QUOTE '\"'
+/* COMMENT : test with bash but not so sure about the space */
+# define CHAR_END_INPUT "<>|& \t\n"
 
 /* respectivement < > << >> | $ ? */
 typedef enum s_tokens
@@ -95,5 +97,11 @@ int			ft_2d_has_doubles(char **arr);
 /* files/ft_str_utils.c */
 int			ft_strocc(char *str, char c);
 char		*ft_strdup_limiters(char *str, int from, int until);
+int			ft_strindex(char *str, char c);
+int			ft_strbase(char *str, const char *base);
+int			ft_char_in_base(char c, const char *base);
+
+/*======================= QUOTES FOLDER =======================*/
+bool		b_parse_quotes(char *str);
 
 #endif

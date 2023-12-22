@@ -6,11 +6,69 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:57:46 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/18 16:28:36 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/22 11:53:26 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+/* COMMENT : retourne faux si base vide */
+int	ft_char_in_base(char c, const char *base)
+{
+	int	i;
+
+	if (!base || !*base || !ft_isascii(c))
+		return (0);
+	i = 0;
+	while (base[i])
+	{
+		if (base[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+/* looks if all char of str are in a set base */
+int	ft_strbase(char *str, const char *base)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	if (!str || !base || *base == 0 || *str == 0)
+		return (0);
+	while (str[i])
+	{
+		j = 0;
+		while (base[j])
+		{
+			if (base[j] == str[i])
+				break ;
+			if (base[j + 1] == '\0')
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+int	ft_strindex(char *str, char c)
+{
+	int	i;
+
+	i = 0;
+	if (!str || *str == 0)
+		return (-1);
+	while (i < (int) ft_strlen(str))
+	{
+		if (str[i] == c)
+			return (i);
+		i++;
+	}
+	return (-1);
+}
 
 char	*ft_strdup_limiters(char *str, int from, int until)
 {
