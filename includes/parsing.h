@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:36:11 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/22 15:28:23 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/22 22:02:40 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define D_QUOTE '\"'
 /* COMMENT : test with bash but not so sure about the space */
 # define CHAR_END_INPUT "<>|& \t\n"
+# define BASE_TOKEN "<>|"
 
 /* respectivement < > << >> | $ ? */
 typedef enum s_tokens
