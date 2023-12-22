@@ -37,6 +37,7 @@
 
 ![Possible answer](readme_pic/explain_1.png)
 [Discord link to this message](https://discord.com/channels/774300457157918772/785407549725736971/886914406712238121)
+
 [man bash](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html)
 ![discord answers](readme_pic/parsing_note_1.png)
 
