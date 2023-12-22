@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:36:11 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/22 11:57:29 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/22 15:28:23 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,6 @@ int			ft_strbase(char *str, const char *base);
 int			ft_char_in_base(char c, const char *base);
 
 /*======================= QUOTES FOLDER =======================*/
-bool		b_parse_quotes(char *str);
+bool		b_closing_quotes(char *str);
 
 #endif
