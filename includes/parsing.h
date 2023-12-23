@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:36:11 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/23 21:50:16 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/23 21:52:38 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ t_env		*ft_init_envi(char **envp);
 t_env_node	*ft_create_node(char *content_, char *tag_, char *cont);
 void		ft_add_envi_node(t_env_node **src, t_env_node *to_add);
 t_env		*ft_init_no_envi(void);
+
 /*======================= UTILS PART =======================*/
 /* files/ft_2d_array.c */
 int			ft_2d_lines(char **array);
@@ -95,7 +96,6 @@ void		ft_free_2d_array(char **array);
 char		**ft_copy_2d_array(char **arr, int from, int len);
 int			ft_len_2d_array(char **arr);
 int			ft_2d_has_doubles(char **arr);
-
 /* files/ft_str_utils.c */
 int			ft_strocc(char *str, char c);
 char		*ft_strdup_limiters(char *str, int from, int until);
