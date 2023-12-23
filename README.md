@@ -20,7 +20,7 @@
 - [x] display env
 - [x] replace (or actualise) an env value function
 - [ ] delete an env value function
-- [ ] create an env value function (export)
+- [x] create an env value function
 - [x] free env struct fuction
 ### parsing cmd
 - [ ] priorite : QUOTE HANDLER
