@@ -16,12 +16,13 @@
 - [ ] Donc est-ce que si on delete totalement, est-ce que free totalement l'env (ne doit pas etre une condition de check pour run __any__ fonction) ou est-ce qu'on remplace le premier node de la struct env en un pointeur non NULL qui est valable uniquement pour ce cas ? 
 ### parsing env
 - [x] envp init
-- [ ] envp init if not env (check what is expected before)(PWD, shell level and _)
+- [x] envp init if not env (check what is expected before)(PWD, shell level and _)
 - [x] display env
 - [x] replace (or actualise) an env value function
 - [x] delete an env value function
 - [x] create an env value function
 - [x] free env struct fuction
+- [ ] creer message d'erreur si erreur d'alloc
 ### parsing cmd
 - [ ] priorite : QUOTE HANDLER
 - [ ] faire choix de struct pour le lexer ou include directement dans le parsing ?
