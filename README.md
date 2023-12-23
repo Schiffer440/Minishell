@@ -5,15 +5,15 @@
 
 # exec
 - [OK] exit
-- [ ] mettre en place la boulce exec qui prend en compte le tab de cmds
+- [ ] mettre en place la boucle exec qui prend en compte le tab de cmds
 - [ ] gerer les redirs dans la structure de cmds
 
 # parse
 - [ ] ``minishell > grep 'coucou' |   | cat main.c `` > msg erreur
 ### env_del.c -> ft_env_del_elem
-- [ ] !!! Est-ce qu'on peut delete tous les elements de l'env ?
-- [ ] Si oui : techniquement si abs path les commandes doivent tjrs s'exec ?
-- [ ] Donc est-ce que si on delete totalement, est-ce que free totalement l'env (ne doit pas etre une condition de check pour run __any__ fonction) ou est-ce qu'on remplace le premier node de la struct env en un pointeur non NULL qui est valable uniquement pour ce cas ? 
+- [x] !!! Est-ce qu'on peut delete tous les elements de l'env ?
+- [x] Si oui : techniquement si abs path les commandes doivent tjrs s'exec ?
+- [x] Donc est-ce que si on delete totalement, est-ce que free totalement l'env (ne doit pas etre une condition de check pour run __any__ fonction) ou est-ce qu'on remplace le premier node de la struct env en un pointeur non NULL qui est valable uniquement pour ce cas ? 
 ### parsing env
 - [x] envp init
 - [x] envp init if not env (check what is expected before)(PWD, shell level and _)
