@@ -1,5 +1,5 @@
 # gen notes
-
+- [ ] modifier ft_printf pour qu'il affiche sur le fd de notre choix (pour stderr)
 - [OK] test exec 
 - [OK] modif ft_exec avec char *exec unique a envoyer dans mon ft_exec(modifer le get cmds)
 
