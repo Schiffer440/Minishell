@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 13:15:03 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/23 17:02:59 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/23 20:32:41 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_env_update(t_env_node *envi, char *tag_, char *cont)
 
 /* tested : OK 
 attention : quand on l'appelle genre dans main il faut bien mettre la condition
-si env existe !! sinon leak */
+si env existe !! sinon leak, car ici ne deal qu'avec node et pas env struct */
 void	ft_env_display(t_env_node **envi)
 {
 	t_env_node	*curr;
@@ -55,7 +55,8 @@ void	ft_env_display(t_env_node **envi)
 	curr = *envi;
 	while (curr)
 	{
-		printf("%s=%s\n", curr->n_tag, curr->n_content);
+		if (curr->n_content[0] != '\0')
+			printf("%s=%s\n", curr->n_tag, curr->n_content);
 		curr = curr->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:51:46 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/23 17:16:57 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/23 20:30:22 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,42 @@ t_env_node	*ft_find_node(t_env_node **envi, char *tag_)
 	return (NULL);
 }
 
+/* comment : need to add if !envi->next : mettre a NULL NULL ? */
+static void	ft_do_del_first(t_env_node **envi, char *tag_)
+{
+	t_env_node	*buff;
+
+	if (!envi || !(*envi))
+		return ;
+	if (ft_strncmp((*envi)->n_tag, tag_, ft_strlen((*envi)->n_tag)))
+		return ;
+	if ((*envi)->next)
+	{
+		buff = *envi;
+		*envi = (*envi)->next;
+		ft_free_node(buff);
+		return ;
+	}
+	else
+	{
+		ft_free_node(*envi);
+		*envi = ft_create_node(NULL, "", "");
+		return ;
+	}
+}
+
 /* check if : not finding, only 1 node (check if leak looking for it) */
-void	ft_env_del_elem(t_env_node *envi, char *tag_)
+void	ft_env_del_elem(t_env_node **envi, char *tag_)
 {
 	t_env_node	*prev;
 	t_env_node	*curr;
 
-	if (!envi)
+	if (!envi || !(*envi))
 		return ;
-	prev = ft_find_prev_node(&envi, tag_);
-//only one node, doit free tout le tableau dans ce cas ? plutot mettre un vide ?	
+	prev = ft_find_prev_node(envi, tag_);
+//only one node or first node, doit free tout le tableau dans ce cas ? plutot mettre un vide ?	
 	if (!prev)
-	{
-// if only one node and tag doesn't fit
-		if (ft_strncmp(envi->n_tag, tag_, ft_strlen(envi->n_tag)))
-			return;
-		ft_free_node(envi);
-		return ;
-	}
+		return (ft_do_del_first(envi, tag_));
 	curr = prev->next;
 //si le node a delete est le dernier	
 	if (!curr->next)
