@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:41:40 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/18 18:06:43 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/23 16:00:32 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_env	*ft_init_envi(char **envp)
 	i = 0;
 	while (envp[i])
 	{
-		buff = ft_create_node(envp[i]);
+		buff = ft_create_node(envp[i], NULL, NULL);
 		if (!ret)
 			ret = buff;
 		else
@@ -71,15 +71,25 @@ void	ft_add_envi_node(t_env_node **src, t_env_node *to_add)
 /* tested : OK */
 /* needs to me modified so it takes tag and content sep */
 /* si ft_get_tag_or_cont renvoie null, quel cas ? arreter ?*/
-t_env_node	*ft_create_node(char *content_)
+t_env_node	*ft_create_node(char *content_, char *tag_, char *cont)
 {
 	t_env_node	*new;
 
 	new = malloc(sizeof(*new));
 	if (!new)
 		return (NULL);
-	new->n_tag = ft_get_tag_or_cont(content_, 't');
-	new->n_content = ft_get_tag_or_cont(content_, 'c');
+	if (!tag_ || !cont)
+	{
+		new->n_tag = ft_get_tag_or_cont(content_, 't');
+		new->n_content = ft_get_tag_or_cont(content_, 'c');
+	}
+	if (!content_ && tag_ && cont)
+	{
+		new->n_tag = ft_strdup(tag_);
+		new->n_content = ft_strdup(cont);
+	}
+//	if (!new->n_tag || !new->n_content)
+//		print error;
 	new->next = NULL;
 	return (new);
 }

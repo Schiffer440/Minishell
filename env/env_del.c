@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:51:46 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/18 16:43:30 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/23 16:13:28 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_env_node	*ft_find_prev_node(t_env_node **envi, char *tag_)
 {
 	t_env_node	*ret;
 
-	if (!envi || !*envi)
+	if (!envi || *envi == NULL)
 		return (NULL);
 	ret = *envi;
 	while (ret->next)
@@ -32,7 +32,7 @@ t_env_node	*ft_find_node(t_env_node **envi, char *tag_)
 {
 	t_env_node	*ret;
 
-	if (!envi || !*envi)
+	if (!envi || *envi == NULL)
 		return (NULL);
 	ret = *envi;
 	while (ret)
@@ -50,9 +50,9 @@ void	ft_env_del_elem(t_env_node *envi, char *tag_)
 	t_env_node	*prev;
 	t_env_node	*curr;
 
-	if (!envi || !*envi)
+	if (!envi)
 		return ;
-	prev = ft_find_prev_node(*envi, tag_);
+	prev = ft_find_prev_node(&envi, tag_);
 //only one node, doit free tout le tableau dans ce cas ? plutot mettre un vide ?	
 	if (!prev)
 	{

@@ -6,13 +6,14 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 13:15:03 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/18 18:06:44 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/23 16:41:35 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-/* TESTED : WORKS don't seem to leak */
+/* TESTED : WORKS don't seem to leak
+si !cont on strdup "" pour eviter leak */
 void	ft_env_update(t_env_node *envi, char *tag_, char *cont)
 {
 	if (!envi || !tag_)
@@ -23,9 +24,8 @@ void	ft_env_update(t_env_node *envi, char *tag_, char *cont)
 		if (!cont)
 			return ;
 	}
-	/* ici */
-	if (!ft_exists_in_env(envi, tag))
-		return (ft_add_envi_node(*envi, ft_create_node()));
+	if (!ft_exists_in_env(envi, tag_))
+		return ;
 	while (envi)
 	{
 		if (!ft_strncmp(envi->n_tag, tag_, ft_strlen(envi->n_tag)))
@@ -43,11 +43,15 @@ void	ft_env_update(t_env_node *envi, char *tag_, char *cont)
 	}
 }
 
-/* tested : OK */
+/* tested : OK 
+attention : quand on l'appelle genre dans main il faut bien mettre la condition
+si env existe !! sinon leak */
 void	ft_env_display(t_env_node **envi)
 {
 	t_env_node	*curr;
 
+	if (!envi || !*envi)
+		return ;
 	curr = *envi;
 	while (curr)
 	{
