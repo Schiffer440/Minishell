@@ -19,7 +19,7 @@
 - [ ] envp init if not env (check what is expected before)(PWD, shell level and _)
 - [x] display env
 - [x] replace (or actualise) an env value function
-- [ ] delete an env value function
+- [x] delete an env value function
 - [x] create an env value function
 - [x] free env struct fuction
 ### parsing cmd
