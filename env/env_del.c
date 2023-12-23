@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:51:46 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/23 20:30:22 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/23 21:50:40 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,9 @@ void	ft_env_del_elem(t_env_node **envi, char *tag_)
 	if (!envi || !(*envi))
 		return ;
 	prev = ft_find_prev_node(envi, tag_);
-//only one node or first node, doit free tout le tableau dans ce cas ? plutot mettre un vide ?	
 	if (!prev)
 		return (ft_do_del_first(envi, tag_));
 	curr = prev->next;
-//si le node a delete est le dernier	
 	if (!curr->next)
 	{
 		prev->next = NULL;
@@ -90,30 +88,6 @@ void	ft_env_del_elem(t_env_node **envi, char *tag_)
 	else
 	{
 		prev->next = curr->next;
-		ft_free_node(curr);
-	}
-}
-
-void	ft_free_node(t_env_node *curr)
-{
-	if (!curr)
-		return ;
-	if (curr->n_tag)
-		free(curr->n_tag);
-	if (curr->n_content)
-		free(curr->n_content);
-	if (curr)
-		free(curr);
-}
-
-void	ft_env_free(t_env_node *envi)
-{
-	t_env_node	*curr;
-
-	while (envi)
-	{
-		curr = envi;
-		envi = envi->next;
 		ft_free_node(curr);
 	}
 }

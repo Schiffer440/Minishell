@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:41:40 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/23 21:34:19 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/23 21:51:10 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,26 +124,3 @@ t_env_node	*ft_create_node(char *content_, char *tag_, char *cont)
 	new->next = NULL;
 	return (new);
 }
-
-/*
-int	main(int argc, char **argv, char **envp)
-{
-	t_env	*ret;
-
-	ret = ft_init_envi(envp);
-	if (!argc || !argv || !ret)
-		printf("oopsie\n");
-	if (argc == 3)
-		ft_env_update(ret->node_, argv[1], argv[2]);
-	ft_env_display(&ret->node_);
-	ft_env_free(ret->node_);
-	free(ret);
-	return (0);
-}
-*/
-/*
-void	ft_init_no_envi(t_env *envi)
-{
-	//si no env ici, est-ce qu'une liste chainee ne serait pas mieux justeeeeee
-}
-*/
