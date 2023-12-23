@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:41:40 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/23 17:08:07 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/23 21:34:19 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_env	*ft_init_envi(char **envp)
 	t_env_node	*buff;
 
 	if (!envp || !*envp)
-		return (NULL);
+		return (ft_init_no_envi());
 	struct_env = malloc(sizeof(*struct_env));
 	if (!struct_env)
 		return (NULL);
@@ -38,6 +38,34 @@ t_env	*ft_init_envi(char **envp)
 		i++;
 	}
 	struct_env->node_ = ret;
+	return (struct_env);
+}
+
+t_env	*ft_init_no_envi(void)
+{
+	t_env		*struct_env;
+	t_env_node	*env_nodes;
+	int			i;
+
+	struct_env = malloc(sizeof(*struct_env));
+	if (!struct_env)
+		return (NULL);
+	struct_env->env = NULL;
+	env_nodes = NULL;
+	i = 0;
+	while (i < 4)
+	{
+		if (i == 0)
+			env_nodes = ft_create_node(NULL, "PWD", "");
+		if (i == 1)
+			ft_add_envi_node(&env_nodes, ft_create_node(NULL, "SHLVL", "2"));
+		if (i == 2)
+			ft_add_envi_node(&env_nodes, ft_create_node(NULL, "OLDPWD", ""));
+		if (i == 3)
+			ft_add_envi_node(&env_nodes, ft_create_node(NULL, "_", ""));
+		i++;
+	}
+	struct_env->node_ = env_nodes;
 	return (struct_env);
 }
 

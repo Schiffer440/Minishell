@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 13:15:03 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/23 20:32:41 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/23 21:24:09 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_env_display(t_env_node **envi)
 	curr = *envi;
 	while (curr)
 	{
-		if (curr->n_content[0] != '\0')
+		if (curr->n_tag[0] != '\0' || curr->n_content[0] != '\0')
 			printf("%s=%s\n", curr->n_tag, curr->n_content);
 		curr = curr->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 16:44:13 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/23 20:21:18 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/23 21:47:30 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	main(int argc, char **argv, char **envp)
 		NULL
 	};*/
 
+/* to test leaks if envp null
+	envp = NULL; */
 	t_env *myEnv = ft_init_envi(envp);
 	if (myEnv && argc >= 3)
 	{

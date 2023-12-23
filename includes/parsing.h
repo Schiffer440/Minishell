@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:36:11 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/23 20:18:41 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/23 20:49:35 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void		ft_env_display(t_env_node **envi);
 t_env		*ft_init_envi(char **envp);
 t_env_node	*ft_create_node(char *content_, char *tag_, char *cont);
 void		ft_add_envi_node(t_env_node **src, t_env_node *to_add);
-
+t_env		*ft_init_no_envi(void);
 /*======================= UTILS PART =======================*/
 /* files/ft_2d_array.c */
 int			ft_2d_lines(char **array);
