@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:41:40 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/23 16:00:32 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/23 16:52:32 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void	ft_add_envi_node(t_env_node **src, t_env_node *to_add)
 {
 	t_env_node	*end;
 
+	if (!to_add)
+		return ;
 	if (!src)
 	{
 		*src = to_add;
@@ -69,16 +71,17 @@ void	ft_add_envi_node(t_env_node **src, t_env_node *to_add)
 }
 
 /* tested : OK */
-/* needs to me modified so it takes tag and content sep */
 /* si ft_get_tag_or_cont renvoie null, quel cas ? arreter ?*/
 t_env_node	*ft_create_node(char *content_, char *tag_, char *cont)
 {
 	t_env_node	*new;
 
+	if (!content_ && !tag_ && !cont)
+		return (NULL);
 	new = malloc(sizeof(*new));
 	if (!new)
 		return (NULL);
-	if (!tag_ || !cont)
+	if (content_ && !tag_ && !cont)
 	{
 		new->n_tag = ft_get_tag_or_cont(content_, 't');
 		new->n_content = ft_get_tag_or_cont(content_, 'c');

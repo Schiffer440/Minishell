@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:40:41 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/18 16:31:35 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/23 16:50:08 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,4 @@ char	*ft_get_tag_or_cont(char *str, char t_or_c)
 	else if (t_or_c == 'c' && (i == len || i + 1 == len))
 		return (ft_strdup(""));
 	return (NULL);
-}
-
-/* NOT TESTED */
-void	ft_actualize_env(t_env_node *envi, char *str)
-{
-	if (!envi || !str)
-		return ;
-	
 }
