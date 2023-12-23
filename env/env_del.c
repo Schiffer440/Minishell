@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:51:46 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/23 16:13:28 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/23 17:16:57 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ void	ft_free_node(t_env_node *curr)
 		free(curr->n_tag);
 	if (curr->n_content)
 		free(curr->n_content);
-	free(curr);
+	if (curr)
+		free(curr);
 }
 
 void	ft_env_free(t_env_node *envi)
