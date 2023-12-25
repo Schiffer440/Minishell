@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:36:11 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/25 19:36:48 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/25 20:24:39 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_cmd {
 
 typedef struct s_parse {
 	int			token_nb;
+	char		**token_array;
 	t_cmd		*cmds;
 	t_cmd		*tmp_cmd;
 	char		**arr_input;
@@ -91,7 +92,15 @@ t_env_node	*ft_create_node(char *content_, char *tag_, char *cont);
 void		ft_add_envi_node(t_env_node **src, t_env_node *to_add);
 t_env		*ft_init_no_envi(void);
 
-/*======================= UTILS PART =======================*/
+/*======================= QUOTES FOLDER =======================*/
+bool		b_closing_quotes(char *str);
+
+/*======================= UTILS FOLDER =======================*/
+char		**ft_split_unbase(char const *s, char *base);
+char		**ft_split_base(char const *s, char *base);
+char		**ft_split_entry_exit(char *str);
+bool		ft_only_sep_base(char *str, char *base);
+bool		ft_only_sep_unbase(char *str, char *base);
 /* files/ft_2d_array.c */
 int			ft_2d_lines(char **array);
 void		ft_free_2d_array(char **array);
@@ -105,13 +114,7 @@ int			ft_strindex(char *str, char c);
 int			ft_strbase(char *str, const char *base);
 int			ft_char_in_base(char c, const char *base);
 
-/*======================= QUOTES FOLDER =======================*/
-bool		b_closing_quotes(char *str);
-
 /*======================= PARSING FOLDER =======================*/
-char		**ft_split_unbase(char const *s, char *base);
-char		**ft_split_base(char const *s, char *base);
-char		**ft_split_entry_exit(char *str);
-bool		ft_only_sep_base(char *str, char *base);
-bool		ft_only_sep_unbase(char *str, char *base);
+bool		ft_is_valid_token(char *str);
+int			ft_get_valid_token_nb(char **token_arr);
 #endif

@@ -1,48 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_struct.c                                      :+:      :+:    :+:   */
+/*   token_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:15:41 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/24 23:34:42 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/25 20:30:03 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-bool	ft_is_token(char *str, char c)
+bool	ft_is_valid_token(char *str)
 {
-	return (ft_char_in_base(c, BASE_TOKEN));
+	size_t	len;
+
+	len = ft_strlen(str);
+	if (len > 2 || len == 0)
+		return (false);
+	if (len == 1)
+		return (ft_char_in_base(*str, BASE_TOKEN));
+	if (str[0] != str[1])
+		return (false);
+	return (true);
 }
 
-int	ft_get_valid_token_nb(char *str)
+/* if all are valids, return nb of it, if not returns 0
+NOTE : DOIT AFFICHER MESSAGE D'ERREUR ICI */
+int	ft_get_valid_token_nb(char **token_arr)
 {
-	int	correct_tokens;
-	int	incorrect_tokens;
-	int	buff;
 	int	i;
+	int	nb;
 
-	correct_tokens = 0;
-	incorrect_tokens = 0;
-	buff = 0;
+	if (!token_arr || *token_arr == '\0')
+		return (0);
 	i = 0;
-	while (str[i])
+	nb = 0;
+	while (token_arr[i])
 	{
-		while (str[i] && ft_is_token(str, str[i]))
-		{
-			buff++;
-			i++;
-		}
-
+		if (!ft_is_valid_token(token_arr[i]))
+			return (0);
+		if (ft_is_valid_token(token_arr[i]))
+			nb++;
 		i++;
 	}
-}
-
-t_tokens	*ft_fill_token_tab(char *str)
-{
-	
+	return (nb);
 }
 
 t_cmd	*ft_fill_struct(char *str)

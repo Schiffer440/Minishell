@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 13:36:50 by adugain           #+#    #+#             */
-/*   Updated: 2023/12/25 13:13:26 by adugain          ###   ########.fr       */
+/*   Updated: 2023/12/25 20:20:08 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_cmd	*create_lst_cmd(void)
 	n_cmd->cmd = 0;
 	n_cmd->cmd_w_arg = 0;
 	n_cmd->next = NULL;
-	// n_cmd->previous = NULL;
+//	n_cmd->previous = NULL;
 	n_cmd->prev_token = 0;
 	n_cmd->next_token = 0;
 	return (n_cmd);
@@ -51,7 +51,7 @@ static int	check_token(char *str)
 static int	get_cmd_n_args(t_parse *parse, int i, int token)
 {
 	int	save;
-	
+
 	save = 0;
 	if (token == 0)
 	{
@@ -63,7 +63,7 @@ static int	get_cmd_n_args(t_parse *parse, int i, int token)
 			parse->cmds->cmd = ft_strjoin_Mshell(parse->cmds->cmd, parse->arr_input[i], 1);
 			i++;
 		}
-		while (parse->arr_input[i] && (token = check_token(parse->arr_input[i])) == 0)
+		while (parse->arr_input[i] && check_token(parse->arr_input[i]) == 0)
 			i++;
 		parse->cmds->cmd_w_arg = ft_copy_2d_array(parse->arr_input, save, i);
 	}
@@ -97,7 +97,7 @@ void	get_lst_cmds(t_data *data, t_parse *parse)
 		return ;
 	parse->cmds = create_lst_cmd();
 	parse->tmp_cmd = parse->cmds;
-	while(parse->arr_input[i])
+	while (parse->arr_input[i])
 	{
 		token = check_token(parse->arr_input[i]);
 		if (token != 0 && i == 0)
