@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:15:41 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/25 20:30:03 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/25 22:04:21 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	ft_is_valid_token(char *str)
 		return (false);
 	if (len == 1)
 		return (ft_char_in_base(*str, BASE_TOKEN));
-	if (str[0] != str[1])
+	if (str[0] != str[1] || !ft_strbase(str, BASE_TOKEN))
 		return (false);
 	return (true);
 }
