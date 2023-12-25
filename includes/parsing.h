@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:36:11 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/23 21:52:38 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/25 13:08:08 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ typedef struct s_cmd {
 typedef struct s_parse {
 	int			token_nb;
 	t_cmd		*cmds;
+	t_cmd		*tmp_cmd;
+	char	**arr_input;
 }	t_parse;
 
 typedef struct s_env_node {

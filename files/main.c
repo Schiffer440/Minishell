@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:35:48 by adugain           #+#    #+#             */
-/*   Updated: 2023/12/21 21:24:01 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/25 13:09:54 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 void	visualizer(t_parse *parse)
 {
 	int	i;
+	int	j;
 	t_cmd	*tmp;
 	
 	tmp = parse->cmds;
 	i = 0;
+	j = 0;
 	while(parse->cmds)
 	{
 		P("cmd:");
@@ -28,7 +30,14 @@ void	visualizer(t_parse *parse)
 			P("N/A");
 		P("cmd_w_arg");
 		if (parse->cmds->cmd_w_arg)
-			P(parse->cmds->cmd_w_arg);
+		{
+			j = 0;
+			while (parse->cmds->cmd_w_arg[j])
+			{
+				P(parse->cmds->cmd_w_arg[j]);
+				j++;
+			}
+		}
 		else
 			P("N/A");
 		P("prev_token");
@@ -43,34 +52,6 @@ void	visualizer(t_parse *parse)
 	Pint(i);
 }
 
-// void	visualizer_prev(t_parse *parse)
-// {
-// 	int	i;
-//
-// 	i = 0;
-// 	while(parse->cmds->next)
-// 	{
-// 		P("---------------------------------------------------");
-// 		P("prev cmd:");
-// 		if (parse->cmds->previous->cmd)
-// 			P(parse->cmds->previous->cmd);
-// 		else
-// 			P("N/A");
-// 		P("prev cmd_w_arg");
-// 		if (parse->cmds->previous->cmd_w_arg)
-// 			P(parse->cmds->previous->cmd_w_arg);
-// 		else
-// 			P("N/A");
-// 		P("prev prev_token");
-// 		Pint(parse->cmds->previous->prev_token);
-// 		P("prev next_token");
-// 		Pint(parse->cmds->previous->next_token);
-// 		parse->cmds = parse->cmds->next;
-// 		i++;
-// 	}
-// 	Pint(i);
-// }
-
 /* COMMENTS : data->input is safe (not causing leaks) */
 void	process(t_data *data, t_parse *parse)
 {
@@ -84,10 +65,10 @@ void	process(t_data *data, t_parse *parse)
 		/*ft nb de redir*/
 		// get_pipes(data, parse);
 		get_lst_cmds(data, parse);
-		// visualizer(parse);
+		visualizer(parse);
 		// visualizer_prev(parse);
 		check_builtin(data, parse);
-		endloop(data);
+		endloop(data, parse);
 	}
 }
 

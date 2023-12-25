@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_2d_arrays.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 15:49:06 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/16 19:08:19 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/25 13:10:51 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/minishell.h"
 
 int	ft_2d_lines(char **array)
 {

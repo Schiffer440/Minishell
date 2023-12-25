@@ -6,7 +6,7 @@
 #    By: adugain <adugain@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/19 21:41:34 by adugain           #+#    #+#              #
-#    Updated: 2023/12/21 17:53:53 by adugain          ###   ########.fr        #
+#    Updated: 2023/12/25 13:10:33 by adugain          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ SRC = files/main.c \
 files/free.c \
 files/init.c \
 files/cmd.c \
-builtin/builtin.c
+builtin/builtin.c \
+files/ft_2d_arrays.c \
+files/ft_str_utils.c
 
 CFLAGS	= -Wextra -Wall -Werror -MMD -g3 -O2
 

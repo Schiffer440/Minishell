@@ -6,7 +6,7 @@
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:59:03 by adugain           #+#    #+#             */
-/*   Updated: 2023/12/21 17:51:02 by adugain          ###   ########.fr       */
+/*   Updated: 2023/12/25 13:05:50 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ typedef struct s_data
 	// int	pipes;
 }t_data;
 
-void	ft_exec(t_data *data);
+void	ft_exec(t_data *data, t_parse *parse);
 void	end_all(t_data *data, t_parse *parse);
-void	endloop(t_data *data);
+void	endloop(t_data *data, t_parse *parse);
 void	free_token(char *s1, char *s2, int token);
 void	process(t_data *data, t_parse *parse);
 char	**get_env(char **envp);

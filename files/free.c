@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:28:48 by adugain           #+#    #+#             */
-/*   Updated: 2023/12/21 21:18:05 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/25 13:04:15 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void	free_all(t_parse *parse)
 {
-	t_cmd	*current_cmd;
-	t_cmd	*next_cmd;
-
-	current_cmd = parse->cmds;
-	while (current_cmd)
+	t_cmd	*buff;
+	
+	buff = NULL;
+	parse->cmds = parse->tmp_cmd;
+	while (parse->cmds)
 	{
-		next_cmd = current_cmd->next;
-		free(current_cmd->cmd);
-		free(current_cmd->cmd_w_arg);
-		free(current_cmd);
-		current_cmd = next_cmd;
+		buff = parse->cmds;
+		parse->cmds =parse->cmds->next;
+		free(buff->cmd);
+		ft_free_2d_array(buff->cmd_w_arg);
 	}
+	free(buff);
 }
 
 void	end_all(t_data *data, t_parse *parse)
@@ -40,11 +40,12 @@ void	end_all(t_data *data, t_parse *parse)
 	}
 	free(data->env);
 	free(data->cwd);
-	free_all(parse);
+	endloop(data, parse);
 }
 
-void	endloop(t_data *data)
+void	endloop(t_data *data, t_parse *parse)
 {
+	free_all(parse);
 	free(data->prompt);
 	free(data->input);
 }

@@ -6,7 +6,7 @@
 /*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:15:21 by adugain           #+#    #+#             */
-/*   Updated: 2023/12/21 17:48:07 by adugain          ###   ########.fr       */
+/*   Updated: 2023/12/25 12:50:28 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,8 @@ static void	exit_shell(t_data *data, t_parse *parse)
 {
 		if (write(1, "exit\n", 5) == -1)
 			perror("write");
-		// free_all(parse);
-		endloop(data);
 		end_all(data, parse);
+		// endloop(data, parse);
 		exit(0);
 }
 

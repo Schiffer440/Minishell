@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 13:36:50 by adugain           #+#    #+#             */
-/*   Updated: 2023/12/21 22:13:01 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/25 13:13:26 by adugain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,26 +48,24 @@ static int	check_token(char *str)
 }
 
 /* Note pour Marianne : ajouter condition de parse apres ici pour handle les quotes */
-static int	get_cmd_n_args(t_parse *parse, char **tmp, int i, int token)
+static int	get_cmd_n_args(t_parse *parse, int i, int token)
 {
+	int	save;
+	
+	save = 0;
 	if (token == 0)
 	{
-		parse->cmds->cmd = ft_strdup(tmp[i]);
+		save = i;
+		parse->cmds->cmd = ft_strdup(parse->arr_input[i]);
 		i++;
-	}
-	while (tmp[i] && ft_strncmp(tmp[i], "-", 1) == 0)
-	{
-		parse->cmds->cmd = ft_strjoin_Mshell(parse->cmds->cmd, " ", 1);
-		parse->cmds->cmd = ft_strjoin_Mshell(parse->cmds->cmd, tmp[i], 1);
-		i++;
-	}
-	/*supprime l'assignement dans la condition de boucle
-	et il y avait une parenthese en trop */
-	while (tmp[i] && check_token(tmp[i]) == 0)
-	{
-		parse->cmds->cmd_w_arg = ft_strjoin_Mshell(parse->cmds->cmd, " ", 0);
-		parse->cmds->cmd_w_arg = ft_strjoin_Mshell(parse->cmds->cmd_w_arg, tmp[i], 1);
-		i++;
+		while (parse->arr_input[i] && strncmp(parse->arr_input[i], "-", 1) == 0)
+		{
+			parse->cmds->cmd = ft_strjoin_Mshell(parse->cmds->cmd, parse->arr_input[i], 1);
+			i++;
+		}
+		while (parse->arr_input[i] && (token = check_token(parse->arr_input[i])) == 0)
+			i++;
+		parse->cmds->cmd_w_arg = ft_copy_2d_array(parse->arr_input, save, i);
 	}
 	return (i);
 }
@@ -85,37 +83,32 @@ static int	next_cmd(t_parse *parse, int i, int token)
 	return (i);
 }
 
-/* j'ai change ton split avec le miens pour voir si ca changeait qqch 
-j'ai laisse pour double protec au cas de str vide */
-/* ici j'ai ajoute visualizer par rapport a ce que tu avais ajoute */
+/*Leak réparé tu peux test echo lol puis exit ou cmd x | ... | exit ça foncitonne 
+dis moi si tu trouve une erreur*/
 void	get_lst_cmds(t_data *data, t_parse *parse)
 {
-	char	**tmp;
-	int		i;
-	int		token;
-	t_cmd	*tmp_cmd;
+	int	i;
+	int	token;
 
 	i  = 0;
 	token = 0;
-	tmp = ft_split(data->input, ' ');
-	if (!tmp)
+	parse->arr_input = ft_split(data->input, ' ');
+	if (!parse->arr_input)
 		return ;
 	parse->cmds = create_lst_cmd();
-	tmp_cmd = parse->cmds;
-	while (tmp[i])
+	parse->tmp_cmd = parse->cmds;
+	while(parse->arr_input[i])
 	{
-		token = check_token(tmp[i]);
+		token = check_token(parse->arr_input[i]);
 		if (token != 0 && i == 0)
 		{
 			parse->cmds->prev_token = token;
 			token = 0;
 			i++;
 		}
-		i = get_cmd_n_args(parse, tmp, i, token);
+		i = get_cmd_n_args(parse, i, token);
 		i = next_cmd(parse, i, token);
 	}
-	visualizer(parse);
-	ft_free_tab_c(tmp);
-	// ft_memcpy(parse->cmds, tmp_cmd, sizeof(tmp_cmd));
-	parse->cmds = tmp_cmd;
+	ft_free_tab_c(parse->arr_input);
+	parse->cmds = parse->tmp_cmd;
 }
