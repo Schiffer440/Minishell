@@ -1,51 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_struct.c                                      :+:      :+:    :+:   */
+/*   ft_only_sep_base.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/24 17:15:41 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/24 23:34:42 by mbruyant         ###   ########.fr       */
+/*   Created: 2023/12/24 23:46:08 by mbruyant          #+#    #+#             */
+/*   Updated: 2023/12/24 23:49:12 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-bool	ft_is_token(char *str, char c)
+bool	ft_only_sep_base(char *str, char *base)
 {
-	return (ft_char_in_base(c, BASE_TOKEN));
-}
-
-int	ft_get_valid_token_nb(char *str)
-{
-	int	correct_tokens;
-	int	incorrect_tokens;
-	int	buff;
 	int	i;
 
-	correct_tokens = 0;
-	incorrect_tokens = 0;
-	buff = 0;
+	if (!str || !*str)
+		return (false);
 	i = 0;
 	while (str[i])
 	{
-		while (str[i] && ft_is_token(str, str[i]))
-		{
-			buff++;
-			i++;
-		}
-
+		if (!ft_char_in_base(str[i], base))
+			return (false);
 		i++;
 	}
-}
-
-t_tokens	*ft_fill_token_tab(char *str)
-{
-	
-}
-
-t_cmd	*ft_fill_struct(char *str)
-{
-
+	return (true);
 }

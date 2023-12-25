@@ -6,13 +6,12 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 09:01:18 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/24 16:58:43 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/24 17:57:24 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-/*
 /* return the index of the closing quote, return 0 if encounters an input that
 ends the entry, see includes/parsing.h */
 static int	ft_find_closing_quote(char *str, char quote, int i)
