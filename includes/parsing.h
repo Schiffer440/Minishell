@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:36:11 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/25 13:08:08 by adugain          ###   ########.fr       */
+/*   Updated: 2023/12/25 19:36:48 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct s_parse {
 	int			token_nb;
 	t_cmd		*cmds;
 	t_cmd		*tmp_cmd;
-	char	**arr_input;
+	char		**arr_input;
 }	t_parse;
 
 typedef struct s_env_node {
@@ -108,4 +108,10 @@ int			ft_char_in_base(char c, const char *base);
 /*======================= QUOTES FOLDER =======================*/
 bool		b_closing_quotes(char *str);
 
+/*======================= PARSING FOLDER =======================*/
+char		**ft_split_unbase(char const *s, char *base);
+char		**ft_split_base(char const *s, char *base);
+char		**ft_split_entry_exit(char *str);
+bool		ft_only_sep_base(char *str, char *base);
+bool		ft_only_sep_unbase(char *str, char *base);
 #endif

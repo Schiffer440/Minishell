@@ -6,13 +6,13 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 02:03:30 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/25 19:36:31 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/25 19:41:57 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-/* split fun renvoie NULL si only sep */
+/*split_unbase separe a partir de tous les elem qui ne sont pas dans une base*/
 static void	*ft_free(char **s, size_t j)
 {
 	while (j > 0)
