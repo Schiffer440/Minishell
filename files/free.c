@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adugain <adugain@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:28:48 by adugain           #+#    #+#             */
-/*   Updated: 2023/12/25 13:04:15 by adugain          ###   ########.fr       */
+/*   Updated: 2023/12/26 14:09:35 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
+/*
 void	free_all(t_parse *parse)
 {
 	t_cmd	*buff;
-	
+
 	buff = NULL;
 	parse->cmds = parse->tmp_cmd;
 	while (parse->cmds)
@@ -27,7 +28,8 @@ void	free_all(t_parse *parse)
 	}
 	free(buff);
 }
-
+*/
+/*
 void	end_all(t_data *data, t_parse *parse)
 {
 	int	i;
@@ -42,10 +44,10 @@ void	end_all(t_data *data, t_parse *parse)
 	free(data->cwd);
 	endloop(data, parse);
 }
-
+*/
 void	endloop(t_data *data, t_parse *parse)
 {
-	free_all(parse);
+	ft_free_cmds(&parse->cmds);
 	free(data->prompt);
 	free(data->input);
 }

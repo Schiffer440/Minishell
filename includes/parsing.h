@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:36:11 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/25 20:24:39 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/26 13:59:33 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,56 +20,7 @@
 /* COMMENT : test with bash but not so sure about the space */
 # define CHAR_END_INPUT "<>|& \t\n"
 # define BASE_TOKEN "<>|"
-
-/* respectivement < > << >> | $ ? */
-typedef enum s_tokens
-{
-	redir_in = 1,
-	redir_out = 2,
-	redir_in_app = 3,
-	redir_out_app = 4,
-	pipe_ = 5,
-	dollar = 6,
-	question = 7
-}t_tokens;
-
-/* CMD_W_ARGS should be char** dsl */
-typedef struct s_cmd {
-	struct s_cmd	*previous;
-	struct s_cmd	*next;
-	t_tokens		prev_token;
-	t_tokens		next_token;
-	bool			b_redir;
-	int				fd_in;
-	int				fd_out;
-	bool			b_abs_path;
-	bool			b_builtin;
-	char			**cmd_w_arg;
-	char			*cmd;
-	int				nb_s_quote;
-	int				nb_d_quote;
-	bool			b_has_quote;
-	char			quote_used;
-}	t_cmd;
-
-typedef struct s_parse {
-	int			token_nb;
-	char		**token_array;
-	t_cmd		*cmds;
-	t_cmd		*tmp_cmd;
-	char		**arr_input;
-}	t_parse;
-
-typedef struct s_env_node {
-	char				*n_tag;
-	char				*n_content;
-	struct s_env_node	*next;
-}	t_env_node;
-
-typedef struct s_env {
-	char		**env;
-	t_env_node	*node_;
-}	t_env;
+# define SYNTAX_ERR "minishell: syntax error near unexpected token '"
 
 /*======================= ENV FOLDER =======================*/
 /* env_actual.c */
@@ -93,6 +44,8 @@ void		ft_add_envi_node(t_env_node **src, t_env_node *to_add);
 t_env		*ft_init_no_envi(void);
 
 /*======================= QUOTES FOLDER =======================*/
+/* quotes/quoting.c */
+char		ft_quoting_char(char *str);
 bool		b_closing_quotes(char *str);
 
 /*======================= UTILS FOLDER =======================*/
@@ -115,6 +68,12 @@ int			ft_strbase(char *str, const char *base);
 int			ft_char_in_base(char c, const char *base);
 
 /*======================= PARSING FOLDER =======================*/
+/* parsing/parse_input.c */
+/* parsing/token_parse.c */
 bool		ft_is_valid_token(char *str);
 int			ft_get_valid_token_nb(char **token_arr);
+/* parsing/print_error.c */
+void		ft_msg_end(char *str, char type, bool del_struct, t_parse *ms);
+void		ft_free_cmds(t_cmd **cmds);
+void		ft_free_all(t_parse *ms);
 #endif
