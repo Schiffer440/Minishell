@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adugain <adugain@student.42.fr>            +#+  +:+       +#+         #
+#    By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/19 21:41:34 by adugain           #+#    #+#              #
-#    Updated: 2023/12/25 13:10:33 by adugain          ###   ########.fr        #
+#    Updated: 2023/12/26 12:18:09 by mbruyant         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,16 @@ files/free.c \
 files/init.c \
 files/cmd.c \
 builtin/builtin.c \
-files/ft_2d_arrays.c \
-files/ft_str_utils.c
+utils/ft_2d_arrays.c \
+utils/ft_str_utils.c \
+utils/ft_printf_fd/srcs/ft_printf.c \
+utils/ft_printf_fd/srcs/ft_printf_hex.c \
+utils/ft_printf_fd/srcs/ft_printf_fun.c \
+utils/ft_printf_fd/srcs/ft_printf_nb.c \
+utils/ft_printf_fd/srcs/ft_printf_ptr.c \
+utils/ft_printf_fd/srcs/ft_printf_uns.c
 
-CFLAGS	= -Wextra -Wall -Werror -MMD -g3 -O2
+CFLAGS	= -Wextra -Wall -Werror -MMD -g3 -O1
 
 CC = cc
 
