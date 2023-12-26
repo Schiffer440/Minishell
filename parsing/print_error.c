@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:51:09 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/26 20:31:26 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/26 23:13:25 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_free_cmds(t_cmd **cmds)
 	while (*cmds)
 	{
 		buff = *cmds;
-		*cmds = cmds->next;
+		*cmds = (*cmds)->next;
 		if (buff->cmd)
 			free(buff->cmd);
 		if (buff->cmd_w_arg)

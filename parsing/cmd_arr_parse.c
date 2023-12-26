@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:55:56 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/26 21:00:49 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/26 22:59:53 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ bool	ft_is_valid_cmd(char *str)
 		return (false);
 	return (true);
 }
-
+/*
 int	ft_get_valid_cmd_nb(char **cmd_arr)
 {
 	int	i;
@@ -33,3 +33,4 @@ int	ft_get_valid_cmd_nb(char **cmd_arr)
 	i = 0;
 	nb = 0;
 }
+*/

@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:45:08 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/26 21:47:17 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/26 23:08:27 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_parse_input(char *str, t_parse *ms)
 	int		nb_tokens;
 
 	arr_token = ft_split_unbase(str, BASE_TOKEN);
-	ar_cmds = ft_split_base(str, BASE_TOKEN);
+	arr_cmds = ft_split_base(str, BASE_TOKEN);
 	if (!arr_token || !arr_cmds)
 	{
 		ft_printf_fd(2, "malloc error ft_parse_input\n");
@@ -41,11 +41,11 @@ int	ft_parse_input(char *str, t_parse *ms)
 //		ft_free_prompt_data(ms);
 		return (R_ERR_SH_B);
 	}
-	ms->arr_token = ft_copy_2d_array(arr_token);
-	ms->arr_cmds = ft_copy_2d_array(arr_cmds);
+	ms->arr_token = ft_copy_2d_array(arr_token, 0, ft_2d_lines(arr_token));
+	ms->arr_input = ft_copy_2d_array(arr_cmds, 0, ft_2d_lines(arr_cmds));
 	ms->token_nb = nb_tokens;
 	ft_free_2d_array(arr_token);
-	ft_free_2d_array(ar_cmds);
+	ft_free_2d_array(arr_cmds);
 //	ft_parse_cmds_vs_tokens(nb_tokens);
 	return (R_EX_OK);
 }
@@ -65,17 +65,20 @@ t_cmd	*ft_fill_cmd_struct(t_parse *ms)
 {
 	int		i;
 	t_cmd	*struct_cmd;
-	t_cmd	*buff;
 
 	i = 0;
 	struct_cmd = malloc(sizeof(*struct_cmd));
 	if (!struct_cmd)
 		return (NULL);
-	buff = NULL;
-	
+	while (ms->arr_input[i])
+	{
+		struct_cmd = ft_create_cmd_node(ms, i);
+		i++;
+	}
+	return (struct_cmd);
 }
 
-void	ft_assign_tokens_values(t_cmd *ret, t_parse *ms, int i)
+int	ft_assign_tokens_values(t_cmd *ret, t_parse *ms, int i)
 {
 	if (i == 0)
 	{
@@ -94,29 +97,28 @@ void	ft_assign_tokens_values(t_cmd *ret, t_parse *ms, int i)
 		else
 		{
 			ft_free_cmds(&ms->cmds);
-			return (NULL);
+			return (0);
 		}
 	}
+	return (1);
 }
 
 /* creates t_cmd node from t_parse->arr_token and t_parse->arr_input
 doit encore fill fd_in et fd_out en fonction de prev et next_token */
-t_cmd	*ft_create_cmd_node(t_parse *ms, int i)
+t_cmd *ft_create_cmd_node(t_parse *ms, int i)
 {
 	t_cmd	*ret;
-	int		start_w_token;
 
 	if (!ms)
 		return (NULL);
 	ret = malloc(sizeof(*ret));
 	if (!ret)
 		return (NULL);
-	start_w_token = 0;
 	if (i == 0)
 		ret->previous = NULL;
 	if (i > 0)
 	{
-		ret->previous = ft_go_to_last_cmd_node(ms->cmd);
+		ret->previous = ft_go_to_last_cmd_node(ms->cmds);
 		if (!ret->previous)
 		{
 			ft_printf_fd(2, "prev creat_cmd_node err\n");
@@ -125,7 +127,12 @@ t_cmd	*ft_create_cmd_node(t_parse *ms, int i)
 		}
 		ret->previous->next = ret;
 	}
-	ft_assign_tokens_values(ret, ms, i);
+	if (!ft_assign_tokens_values(ret, ms, i))
+	{
+		ft_printf_fd(2, "assign token val creat_cmd_node err\n");
+		ft_free_cmds(&ms->cmds);
+		return (NULL);
+	}
 	ret->next = NULL;
 	ret->cmd_w_arg = ft_split(ms->arr_input[i], ' ');
 	if (!ret->cmd_w_arg)

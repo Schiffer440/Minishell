@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:59:03 by adugain           #+#    #+#             */
-/*   Updated: 2023/12/26 21:09:44 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/26 23:10:00 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "../libft/libft.h"
 # include <sys/types.h>
 # include "exec.h"
+# include "../utils/ft_printf_fd/ft_printf_fd.h"
 # define P(str) (printf("%s\n", str))
 # define Pint(int) (printf("%d\n", int))
 
@@ -31,6 +32,7 @@
 /* COMMENT : test with bash but not so sure about the space */
 # define CHAR_END_INPUT "<>|& \t\n"
 # define BASE_TOKEN "<>|"
+# define BASE_WHITESP " \b\t\v\r\f"
 # define SYNTAX_ERR "minishell: syntax error near unexpected token '"
 
 # define R_EX_OK 0
@@ -73,8 +75,8 @@ typedef enum s_tokens
 typedef struct s_cmd {
 	struct s_cmd	*previous;
 	struct s_cmd	*next;
-	int				prev_token;
-	int				next_token;
+	char			*prev_token;
+	char			*next_token;
 	bool			b_redir;
 	int				fd_in;
 	int				fd_out;
@@ -171,9 +173,14 @@ int			ft_strlen_base(char *str, char *base, int from);
 
 /*======================= PARSING FOLDER =======================*/
 /* parsing/parse_input.c */
+int			ft_parse_input(char *str, t_parse *ms);
+t_cmd		*ft_go_to_last_cmd_node(t_cmd *cmd_node);
+t_cmd		*ft_fill_cmd_struct(t_parse *ms);
+int			ft_assign_tokens_values(t_cmd *ret, t_parse *ms, int i);
+t_cmd		*ft_create_cmd_node(t_parse *ms, int i);
 /* parsing/token_parse.c */
 bool		ft_is_valid_token(char *str);
-int			ft_get_valid_token_nb(char **token_arr);
+int			ft_get_valid_token_nb(char **token_arr, char *str);
 int			ft_starts_with_valid_token(char *str);
 /* parsing/print_error.c */
 void		ft_msg_end(char *str, char type, bool del_struct, t_parse *ms);

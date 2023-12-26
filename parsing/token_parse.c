@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:15:41 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/26 21:00:08 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/26 23:18:20 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	ft_starts_with_valid_token(char *str)
 	i = 0;
 	if (!ft_strocc_base(str, BASE_TOKEN))
 		return (-1);
-	while (str[i] && ft_iswhitespace(str[i]))
+	while (str[i] && ft_char_in_base(str[i], BASE_WHITESP))
 		i++;
 	end = i;
 	while (str[end] && ft_char_in_base(str[end], BASE_TOKEN))
@@ -88,9 +88,9 @@ int	ft_get_valid_token_nb(char **token_arr, char *str)
 	int	i;
 	int	nb;
 
-	if (!token_arr || ft_starts_with_token(str))
+	if (!token_arr || !ft_starts_with_valid_token(str))
 		return (0);
-	if (*token_arr == '\0')
+	if (!ft_strlen(*token_arr))
 		return (-1);
 	i = 0;
 	nb = 0;

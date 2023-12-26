@@ -6,11 +6,11 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 14:44:31 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/26 16:43:08 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/26 22:53:32 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/minishell.h"
 
 static char	*ft_deal_malloc_err(char *str)
 {
