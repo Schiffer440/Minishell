@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:45:08 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/26 18:44:10 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/26 21:47:17 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,22 +75,69 @@ t_cmd	*ft_fill_cmd_struct(t_parse *ms)
 	
 }
 
+void	ft_assign_tokens_values(t_cmd *ret, t_parse *ms, int i)
+{
+	if (i == 0)
+	{
+		ret->previous = NULL;
+
+		if (ms->start_w_val_tok == 1 && ms->token_nb >= 2)
+		{
+			ret->prev_token = ms->arr_token[i];
+			ret->next_token = ms->arr_token[i + 1];
+		}
+		else if (ms->start_w_val_tok == -1 && ms->token_nb >= 1)
+		{
+			ret->prev_token = NULL;
+			ret->next_token = ms->arr_token[i];
+		}
+		else
+		{
+			ft_free_cmds(&ms->cmds);
+			return (NULL);
+		}
+	}
+}
+
+/* creates t_cmd node from t_parse->arr_token and t_parse->arr_input
+doit encore fill fd_in et fd_out en fonction de prev et next_token */
 t_cmd	*ft_create_cmd_node(t_parse *ms, int i)
 {
 	t_cmd	*ret;
+	int		start_w_token;
 
 	if (!ms)
 		return (NULL);
 	ret = malloc(sizeof(*ret));
 	if (!ret)
 		return (NULL);
+	start_w_token = 0;
 	if (i == 0)
 		ret->previous = NULL;
 	if (i > 0)
 	{
 		ret->previous = ft_go_to_last_cmd_node(ms->cmd);
+		if (!ret->previous)
+		{
+			ft_printf_fd(2, "prev creat_cmd_node err\n");
+			ft_free_cmds(&ms->cmds);
+			return (NULL);
+		}
 		ret->previous->next = ret;
 	}
+	ft_assign_tokens_values(ret, ms, i);
 	ret->next = NULL;
-	ret->cmd_w_arg =
+	ret->cmd_w_arg = ft_split(ms->arr_input[i], ' ');
+	if (!ret->cmd_w_arg)
+	{
+		ft_printf_fd(2, "malloc cmd_w_arg creat_cmd_node err\n");
+		ft_free_cmds(&ms->cmds);
+	}
+	ret->cmd = ft_strdup(ret->cmd_w_arg[0]);
+	if (!ret->cmd)
+	{
+		ft_printf_fd(2, "malloc cmd creat_cmd_node err\n");
+		ft_free_cmds(&ms->cmds);
+	}
+	return (ret);
 }

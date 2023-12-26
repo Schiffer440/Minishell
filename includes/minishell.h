@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:59:03 by adugain           #+#    #+#             */
-/*   Updated: 2023/12/26 20:35:02 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/26 21:09:44 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ typedef struct s_cmd {
 
 typedef struct s_parse {
 	int			token_nb;
+	int			start_w_val_tok;
 	char		**arr_token;
 	t_cmd		*cmds;
 	char		**arr_input;
