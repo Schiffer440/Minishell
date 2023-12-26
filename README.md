@@ -1,5 +1,9 @@
+# A savoir
+## ft_printf_fd
+* Renvoie un message d'erreur sur stderr si tu cherches a ecrire sur un fd qui n'est pas ouvert
+
 # gen notes
-- [ ] modifier ft_printf pour qu'il affiche sur le fd de notre choix (pour stderr)
+- [x] modifier ft_printf pour qu'il affiche sur le fd de notre choix (pour stderr)
 - [OK] test exec 
 - [OK] modif ft_exec avec char *exec unique a envoyer dans mon ft_exec(modifer le get cmds)
 
@@ -23,6 +27,7 @@
 - [x] create an env value function
 - [x] free env struct fuction
 - [ ] creer message d'erreur si erreur d'alloc
+- [ ] reconnait '$ARG' et cherche dans env
 ### parsing cmd
 - [ ] priorite : QUOTE HANDLER
 - [ ] faire choix de struct pour le lexer ou include directement dans le parsing ?
