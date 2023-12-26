@@ -6,7 +6,7 @@
 /*   By: mbruyant <mbruyant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:15:41 by mbruyant          #+#    #+#             */
-/*   Updated: 2023/12/26 20:50:04 by mbruyant         ###   ########.fr       */
+/*   Updated: 2023/12/26 21:00:08 by mbruyant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ static int	ft_case_by_case(char *buff)
 
 /* dans le parsing, si !ft_starts_w_valid_token, juste free the prompt struct
 msg erreur deja dans la fonction 
-renvoie -1 si aucun token dans str */
+renvoie -1 si aucun token dans str
+if i == end, means it doesn't start by a token, returns -1 */
 int	ft_starts_with_valid_token(char *str)
 {
 	int		i;
@@ -72,7 +73,7 @@ int	ft_starts_with_valid_token(char *str)
 	while (str[end] && ft_char_in_base(str[end], BASE_TOKEN))
 		end++;
 	if (i == end)
-		return (0);
+		return (-1);
 	buff = ft_strdup_limiters(str, i, end);
 	if (!buff)
 		return (0);
